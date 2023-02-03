@@ -30,9 +30,16 @@ class HomeListView extends ConsumerWidget {
                 String? subtitle;
                 if (columnHeaderState.titleField?.type == 'date' ||
                     columnHeaderState.titleField?.type == 'Date') {
-                  title = DateTime.tryParse(
-                          list[index].data[columnHeaderState.titleField?.key])
-                      .toString();
+                  // title = DateTime.tryParse(
+                  //         list[index].data[columnHeaderState.titleField?.key])
+                  //     .toString();
+                  var date = DateTime.tryParse(
+                      list[index].data[columnHeaderState.titleField?.key]);
+                  if (date != null) {
+                    title = DateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+                  } else {
+                    title = list[index].data[columnHeaderState.titleField?.key];
+                  }
                 } else {
                   title = list[index]
                       .data[columnHeaderState.titleField?.key]
@@ -40,9 +47,15 @@ class HomeListView extends ConsumerWidget {
                 }
                 if (columnHeaderState.subtitleField?.type == 'date' ||
                     columnHeaderState.subtitleField?.type == 'Date') {
-                  subtitle = DateTime.tryParse(list[index]
-                          .data[columnHeaderState.subtitleField?.key])
-                      .toString();
+                  var date = DateTime.tryParse(
+                      list[index].data[columnHeaderState.subtitleField?.key]);
+                  if (date != null) {
+                    subtitle = DateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+                  } else {
+                    subtitle = list[index]
+                        .data[columnHeaderState.subtitleField?.key]
+                        .toString();
+                  }
                 } else {
                   subtitle = list[index]
                       .data[columnHeaderState.subtitleField?.key]

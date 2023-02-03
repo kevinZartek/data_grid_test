@@ -4,6 +4,7 @@ import 'package:data_grid_test/features/home/view_models/current_field_list_mode
 import 'package:data_grid_test/features/home/view_models/grid_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class HomeGridView extends ConsumerWidget {
   const HomeGridView({
@@ -29,47 +30,37 @@ class HomeGridView extends ConsumerWidget {
                       .copyWith(fontSize: 12.0),
                   dataRowHeight: 54.0,
                   showCheckboxColumn: false,
-                  columns:
-                      // DataColumn(label: Text('${listState[0].label}')),
-                      // DataColumn(label: Text('${listState[0].label}')),
-                      // DataColumn(label: Text('${listState[0].label}')),
-                      // DataColumn(label: Text('${listState[0].label}')),
-                      columnListState.map((columnItem) {
-                    return DataColumn(label: Text('${columnItem.label}',style: AppTextStyles.h4.copyWith(fontWeight: FontWeight.bold),));
+                  columns: columnListState.map((columnItem) {
+                    return DataColumn(
+                        label: Text(
+                      '${columnItem.label}',
+                      style: AppTextStyles.h4
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ));
                   }).toList(),
                   rows: dataList.map((e) {
                     final textStyle = TextStyle(
                       color: Theme.of(context).iconTheme.color,
                     );
                     return DataRow(
-                        cells:
-                            // [
-                            //   DataCell(
-                            //     Text(e.data[columnListState[0].label].toString(),
-                            //         style: textStyle),
-                            //   ),
-                            //   DataCell(
-                            //     Text(e.data[columnListState[0].label].toString(),
-                            //         style: textStyle),
-                            //   ),
-                            //   DataCell(
-                            //     Text(e.data[columnListState[0].label].toString(),
-                            //         style: textStyle),
-                            //   ),
-                            //   DataCell(
-                            //     Text(e.data[columnListState[0].label].toString(),
-                            //         style: textStyle),
-                            //   ),
-                            // ],
-                            columnListState.map((item) {
+                        cells: columnListState.map((item) {
+                      String? title;
+                      if (item.type == 'date' || item.type == 'Date') {
+                        var date = DateTime.tryParse(e.data[item.key]);
+                        if (date != null) {
+                          title =
+                              DateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+                        } else {
+                          title = e.data[item.key].toString();
+                        }
+                      } else {
+                        title = e.data[item.key].toString();
+                      }
                       return DataCell(Text(
-                        e.data[item.key].toString(),
+                        title ?? '',
                         style: textStyle,
                       ));
-                    }).toList()
-                        // onSelectChanged: (_) =>
-                        // context.read<CurrentTrackModel>().selectTrack(e),
-                        );
+                    }).toList());
                   }).toList(),
                 ),
               );

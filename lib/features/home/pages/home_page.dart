@@ -1,3 +1,4 @@
+import 'package:data_grid_test/core/config/app_colors.dart';
 import 'package:data_grid_test/core/config/app_text_styles.dart';
 import 'package:data_grid_test/core/widgets/text_field.dart';
 import 'package:data_grid_test/features/home/view_models/current_field_list_model.dart';
@@ -20,7 +21,7 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
           title: Text(
         'Data View',
-        style: AppTextStyles.h3.copyWith(fontWeight: FontWeight.bold),
+        style: AppTextStyles.h3.copyWith(fontWeight: FontWeight.bold,color: AppColors.primary),
       )),
       body: SafeArea(
         child: Stack(
