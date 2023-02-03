@@ -1,10 +1,7 @@
 import 'package:data_grid_test/core/config/app_colors.dart';
 import 'package:data_grid_test/core/config/app_text_styles.dart';
-import 'package:data_grid_test/core/widgets/text_field.dart';
-import 'package:data_grid_test/features/home/view_models/current_field_list_model.dart';
-import 'package:data_grid_test/features/home/view_models/grid_model.dart';
-import 'package:data_grid_test/features/home/views/grid_view.dart';
-import 'package:data_grid_test/features/home/views/list_view.dart';
+import 'package:data_grid_test/features/home/views/home_grid_view.dart';
+import 'package:data_grid_test/features/home/views/home_list_view.dart';
 import 'package:data_grid_test/features/home/views/settings_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -32,9 +29,15 @@ class HomePage extends ConsumerWidget {
                   child: Row(
                     children: [
                       if (MediaQuery.of(context).size.width < 800)
-                        SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: const HomeListView())
+                        Stack(
+                          children: [
+                            SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                child: const HomeListView()),
+                            Positioned(bottom: 7.h, right: 2.h, child: const SettingsButton())
+
+                          ],
+                        )
                       else
                         const Expanded(
                           child: HomeGridView(),
@@ -44,7 +47,6 @@ class HomePage extends ConsumerWidget {
                 ),
               ],
             ),
-            Positioned(bottom: 7.h, right: 2.h, child: const SettingsButton())
           ],
         ),
       ),

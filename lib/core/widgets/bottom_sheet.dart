@@ -51,7 +51,7 @@ class _CustomAppDialogState extends State<BarBottomSheet> {
               child: ListView(shrinkWrap: true, children: [
                 const SizedBox(height: 8),
                 Material(
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15)),
@@ -68,10 +68,10 @@ class _CustomAppDialogState extends State<BarBottomSheet> {
                             SafeArea(
                               bottom: false,
                               child: Container(
-                                height: 6,
+                                height: 5,
                                 width: 60,
                                 decoration:  BoxDecoration(
-                                    color: AppColors.white.withOpacity(0.7)),
+                                    color: AppColors.primary.withOpacity(0.7)),
                               ),
                             ),
                             const SizedBox(height: 20),

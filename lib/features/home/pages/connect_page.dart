@@ -18,12 +18,9 @@ class ConnectPage extends ConsumerStatefulWidget {
 }
 
 class _ConnectPageState extends ConsumerState<ConnectPage> {
-
-
   final _uriCtrl = TextEditingController();
 
   bool _busy = false;
-
 
   @override
   void initState() {
@@ -42,6 +39,7 @@ class _ConnectPageState extends ConsumerState<ConnectPage> {
       setState(() {
         _busy = true;
       });
+      FocusScope.of(context).requestFocus(FocusNode());
       ref.read(urlFieldStateProvider.notifier).updateField(_uriCtrl.text);
       if (ref.read(connectPageViewProvider).formKey.currentState!.validate()) {
         ref.read(addColumnListController.notifier).submit();
@@ -53,14 +51,13 @@ class _ConnectPageState extends ConsumerState<ConnectPage> {
         }
       }
     } catch (error) {
-      print('Could not connect $error');
+      debugPrint('Could not connect $error');
     } finally {
       setState(() {
         _busy = false;
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) => Scaffold(

@@ -1,4 +1,4 @@
-import 'package:data_grid_test/core/models/column_item.dart';
+import 'package:data_grid_test/features/home/models/column_item.dart';
 import 'package:data_grid_test/features/home/state/list_header_state.dart';
 import 'package:data_grid_test/features/home/view_models/current_field_list_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,8 +11,7 @@ final settingsControllerProvider =
 });
 
 class SettingsController extends StateNotifier<ListHeaderState> {
-  SettingsController(this.columnListState)
-      : super(ListHeaderState.initial()) {
+  SettingsController(this.columnListState) : super(ListHeaderState.initial()) {
     initState();
   }
 
@@ -26,29 +25,12 @@ class SettingsController extends StateNotifier<ListHeaderState> {
   }
 
   void changeTitle(titleItem) {
-    // if (state.selectedNoFilter) return;
     state = state.copyWith(titleField: titleItem);
   }
 
   void changeSubtitle(subTitleItem) {
     state = state.copyWith(subtitleField: subTitleItem);
   }
-
-  // void markFilterSubItem(FilterSubItem filterSubItem, bool? _selected) {
-  //   if (_selected != null && _selected) {
-  //     state = state.copyWith(
-  //       selected: _selected,
-  //       status: TaskFilterStatus.intermediate,
-  //       selectedFilters: [...state.selectedFilters, filterSubItem],
-  //     );
-  //   } else {
-  //     state = state.copyWith(
-  //       selected: _selected,
-  //       status: TaskFilterStatus.intermediate,
-  //       selectedFilters: state.selectedFilters..remove(filterSubItem),
-  //     );
-  //   }
-  // }
 
   void reset() {
     state = ListHeaderState.initial();

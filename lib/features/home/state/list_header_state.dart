@@ -1,4 +1,4 @@
-import 'package:data_grid_test/core/models/column_item.dart';
+import 'package:data_grid_test/features/home/models/column_item.dart';
 import 'package:equatable/equatable.dart';
 
 enum ListHeaderStatus { initial, loaded, error }

@@ -1,3 +1,4 @@
+import 'package:data_grid_test/core/utils/size_config.dart';
 import 'package:data_grid_test/features/home/view_models/current_field_list_model.dart';
 import 'package:data_grid_test/features/home/view_models/grid_model.dart';
 import 'package:data_grid_test/features/home/view_models/settings_controller.dart';
@@ -60,14 +61,32 @@ class HomeListView extends ConsumerWidget {
                       .toString();
                 }
                 return ListTile(
-                  title: Text(
-                    '${columnHeaderState.titleField?.label} : $title',
-                    style: AppTextStyles.bodyLg,
+                  title: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('${columnHeaderState.titleField?.label}',
+                          style: AppTextStyles.body),
+                      hsBox1,
+                      Expanded(
+                        child: Text(
+                          title ?? '',
+                          style: AppTextStyles.bodyLg
+                              .copyWith(fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ],
                   ),
                   subtitle: columnListState.length > 1
-                      ? Text(
-                          '${columnHeaderState.subtitleField?.label} : $subtitle',
-                          style: AppTextStyles.body)
+                      ? Row(
+                          children: [
+                            Text('${columnHeaderState.subtitleField?.label}  ',
+                                style: AppTextStyles.body),
+                            hsBox1,
+                            Text(subtitle ?? '',
+                                style: AppTextStyles.body
+                                    .copyWith(fontWeight: FontWeight.w500)),
+                          ],
+                        )
                       : null,
                 );
               },

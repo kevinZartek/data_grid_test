@@ -1,4 +1,4 @@
-import 'package:data_grid_test/core/models/column_item.dart';
+import 'package:data_grid_test/features/home/models/column_item.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

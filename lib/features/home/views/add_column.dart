@@ -1,3 +1,5 @@
+import 'package:data_grid_test/core/config/app_colors.dart';
+import 'package:data_grid_test/core/config/app_text_styles.dart';
 import 'package:data_grid_test/core/widgets/text_field.dart';
 import 'package:data_grid_test/features/home/view_models/add_field_controller.dart';
 import 'package:data_grid_test/features/home/view_models/connect_model.dart';
@@ -87,8 +89,10 @@ class AddColumnView extends ConsumerWidget {
           children: [
             const Spacer(),
             TextButton(
-                child: const Text(
-                  'Add a field',
+                child: Text(
+                  'Add column',
+                  style: AppTextStyles.body
+                      .copyWith(color: AppColors.darkAccentColor),
                 ),
                 onPressed: () =>
                     ref.read(addColumnListController.notifier).add()),

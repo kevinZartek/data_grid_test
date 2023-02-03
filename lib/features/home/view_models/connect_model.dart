@@ -19,10 +19,4 @@ class ConnectPageViewModel extends BaseViewModel {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   GlobalKey<FormState> get formKey => _formKey;
-// Future<HitchResponseModelData?> getData() async {
-//   setState(ViewState.busy);
-//     // Alert.showToast('Please agree to terms and conditions');
-//     setState(ViewState.idle);
-//     return null;
-//   }
 }
