@@ -17,7 +17,7 @@ class SettingsBottomSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final allFieldListState = ref.watch(currentFieldListStateProvider);
-    final currentState = ref.watch(listHeaderControllerProvider);
+    final currentState = ref.watch(settingsControllerProvider);
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -69,7 +69,7 @@ class SettingsBottomSheet extends ConsumerWidget {
                             onChanged: (ColumnItem? val) {
                               FocusScope.of(context).requestFocus(FocusNode());
                               ref
-                                  .read(listHeaderControllerProvider.notifier)
+                                  .read(settingsControllerProvider.notifier)
                                   .changeTitle(val);
                             },
                             hint: const Text(
@@ -114,7 +114,7 @@ class SettingsBottomSheet extends ConsumerWidget {
                             onChanged: (ColumnItem? val) {
                               FocusScope.of(context).requestFocus(FocusNode());
                               ref
-                                  .read(listHeaderControllerProvider.notifier)
+                                  .read(settingsControllerProvider.notifier)
                                   .changeSubtitle(val);
                             },
                             hint: const Text(

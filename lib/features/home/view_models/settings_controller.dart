@@ -3,15 +3,15 @@ import 'package:data_grid_test/features/home/state/list_header_state.dart';
 import 'package:data_grid_test/features/home/view_models/current_field_list_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final listHeaderControllerProvider =
-    StateNotifierProvider.autoDispose<ListHeaderController, ListHeaderState>(
+final settingsControllerProvider =
+    StateNotifierProvider.autoDispose<SettingsController, ListHeaderState>(
         (ref) {
   final columnListState = ref.watch(currentFieldListStateProvider);
-  return ListHeaderController(columnListState);
+  return SettingsController(columnListState);
 });
 
-class ListHeaderController extends StateNotifier<ListHeaderState> {
-  ListHeaderController(this.columnListState)
+class SettingsController extends StateNotifier<ListHeaderState> {
+  SettingsController(this.columnListState)
       : super(ListHeaderState.initial()) {
     initState();
   }

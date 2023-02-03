@@ -1,5 +1,3 @@
-import 'package:data_grid_test/core/utils/date_utils.dart';
-import 'package:data_grid_test/core/widgets/text_field.dart';
 import 'package:data_grid_test/features/home/view_models/current_field_list_model.dart';
 import 'package:data_grid_test/features/home/view_models/grid_model.dart';
 import 'package:data_grid_test/features/home/view_models/settings_controller.dart';
@@ -17,7 +15,7 @@ class HomeListView extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final dataAsync = ref.watch(gridDataProvider);
     final columnListState = ref.watch(currentFieldListStateProvider);
-    final columnHeaderState = ref.watch(listHeaderControllerProvider);
+    final columnHeaderState = ref.watch(settingsControllerProvider);
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
