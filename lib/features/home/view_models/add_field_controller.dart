@@ -42,7 +42,7 @@ class AddColumnListController
 
   void add({String? text}) {
     bool isEmptyField = false;
-    if (state.length >= 4) return;
+    if (state.length >= 8) return;
     for (int i = 0; i < state.length; i++) {
       if (state[i].labelController.text == '' ||
           state[i].typeController.text == '' ||
